@@ -27,7 +27,6 @@ function analyzeFile(fileName) {
 
   if (fileContent.includes("var ")) warnings++;
   if (fileContent.includes("== ")) warnings++;
-  if (fileContent.includes("password")) securityIssues++;
 
   return { fileName, warnings, securityIssues };
 }
