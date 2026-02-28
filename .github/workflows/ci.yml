@@ -22,5 +22,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Code Analyzer
-        run: node index.js src
+      - name: Format Check (Prettier)
+        run: npm run format:check
+
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      - name: Run Custom Analyzer
+        run: npm run analyze
