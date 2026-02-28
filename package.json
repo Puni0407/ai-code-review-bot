@@ -9,5 +9,8 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "test": "echo No tests yet"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
   }
 }
