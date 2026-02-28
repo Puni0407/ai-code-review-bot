@@ -2,9 +2,9 @@ name: Code Review CI
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   push:
-    branches: [ main, test-ai-review ]
+    branches: [main, test-ai-review]
 
 permissions:
   contents: read

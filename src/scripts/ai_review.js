@@ -1,14 +1,14 @@
-const fs = require("fs");
-const OpenAI = require("openai");
+const fs = require('fs');
+const OpenAI = require('openai');
 
 const client = new OpenAI({
   apiKey: process.env.GH_MODELS_TOKEN, // GitHub token (models:read)
-  baseURL: "https://models.github.ai/inference", // IMPORTANT
+  baseURL: 'https://models.github.ai/inference', // IMPORTANT
 });
 
 async function main() {
-  const diffPath = process.argv[2] || "diff.txt";
-  const diff = fs.readFileSync(diffPath, "utf8");
+  const diffPath = process.argv[2] || 'diff.txt';
+  const diff = fs.readFileSync(diffPath, 'utf8');
 
   const prompt = `
 You are a senior code reviewer.
@@ -21,8 +21,8 @@ ${diff}
 `;
 
   const res = await client.chat.completions.create({
-    model: "openai/gpt-4o-mini", // or whichever model GitHub Models allows for you
-    messages: [{ role: "user", content: prompt }],
+    model: 'openai/gpt-4o-mini', // or whichever model GitHub Models allows for you
+    messages: [{ role: 'user', content: prompt }],
     temperature: 0.2,
   });
 
