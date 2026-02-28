@@ -6,8 +6,8 @@
   "scripts": {
     "analyze": "node index.js src",
     "lint": "eslint .",
-    "format:check": "prettier --check .",
-    "format:write": "prettier --write .",
+    "format:check": "npx prettier --check .",
+    "format:write": "npx prettier --write .",
     "test": "echo No tests yet"
   },
   "devDependencies": {

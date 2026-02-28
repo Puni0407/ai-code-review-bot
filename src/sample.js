@@ -5,12 +5,12 @@ function login(user) {
   const password = process.env.PASSWORD;
 
   if (user === null) {
-    console.log("user not found");
+    console.log('user not found');
   }
 
   // Using the variable so ESLint won't warn
-  return password ? "ok" : "missing password";
+  return password ? 'ok' : 'missing password';
 }
 
 // Call function so it's not unused
-login("admin");
+login('admin');

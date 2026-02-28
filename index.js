@@ -33,7 +33,9 @@ function analyzeFile(fileName) {
 
 console.log(`\n🔍 Scanning: ${target}\n`);
 
-const files = fs.statSync(target).isDirectory() ? getAllJsFiles(target) : [target];
+const files = fs.statSync(target).isDirectory()
+  ? getAllJsFiles(target)
+  : [target];
 
 let totalWarnings = 0;
 let totalSecurity = 0;
