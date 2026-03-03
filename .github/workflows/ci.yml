@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # IMPORTANT for git diff merge-base
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -25,7 +27,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Format Check (Prettier)
         run: npm run format:check
@@ -37,13 +39,11 @@ jobs:
         run: npm run analyze
 
       # ✅ Generate PR Diff
-            - name: Generate Diff
+      - name: Generate Diff
         if: github.event_name == 'pull_request'
         run: |
-          git fetch --no-tags --prune --depth=1 origin ${{ github.event.pull_request.base.sha }}
-          git fetch --no-tags --prune --depth=1 origin ${{ github.event.pull_request.head.sha }}
           git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > diff.txt
-          echo "Diff generated. Lines:"
+          echo "Diff lines:"
           wc -l diff.txt
 
       # ✅ Run AI Review (GitHub Models)
